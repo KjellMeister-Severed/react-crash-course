@@ -77,7 +77,7 @@ function App() {
             <div className="container">
                 <Header title="Task Tracker" onAdd={toggleAddForm} showAddTask={showAddTask}/>
                 <Route path={'/about' } component={About} />
-                <Route path={'/'} exact render={(props) => (
+                <Route path={'/'} exact render={() => (
                         <>
                             {showAddTask && <AddTask onAdd={addTask}/>}
                             {tasks.length > 0 ?
