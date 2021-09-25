@@ -4,7 +4,7 @@ const Task = ({task, onDelete, onToggle}) => {
     return (
         //conditional styling
         <div className={`task ${task.reminder ? "reminder" : ""}`} onDoubleClick={() => onToggle(task.id)}>
-            <h3>{task.text} <FaTimes style={{color:"red"}} onClick={() => onDelete(task.id)}/></h3>
+            <h3>{task.text} <FaTimes style={{color: "red"}} onClick={() => onDelete(task.id)}/></h3>
             <p>{task.day}</p>
         </div>
     )

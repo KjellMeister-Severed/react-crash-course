@@ -5,8 +5,7 @@ import AddTask from "./components/AddTask";
 
 function App() {
     const [showAddTask, setShowAddTask] = useState(false)
-    const [tasks, setTasks] = useState([
-    ])
+    const [tasks, setTasks] = useState([])
 
     useEffect(() => {
         const getTasks = async () => {
@@ -55,7 +54,7 @@ function App() {
         }
         const res = await fetch(`http://localhost:5000/tasks/${id}`, {
             method: 'PUT',
-            headers:{
+            headers: {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(updTask)
@@ -63,7 +62,7 @@ function App() {
 
         const data = await res.json();
 
-        setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: data.reminder} : task))
+        setTasks(tasks.map((task) => task.id === id ? {...task, reminder: data.reminder} : task))
     }
 
     const toggleAddForm = () => {
@@ -71,10 +70,11 @@ function App() {
     }
 
     return (
-        <div  className="container">
+        <div className="container">
             <Header title="Task Tracker" onAdd={toggleAddForm} showAddTask={showAddTask}/>
             {showAddTask && <AddTask onAdd={addTask}/>}
-            {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : "No tasks yet..."}
+            {tasks.length > 0 ?
+                <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : "No tasks yet..."}
         </div>
     );
 }
